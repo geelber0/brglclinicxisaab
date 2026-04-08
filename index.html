@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Beergeel OBGY | Full Secured Cloud</title>
+    <title>Beergeel OBGY | Full Cloud System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
@@ -17,57 +17,52 @@
         .user-opt { flex: 1; border: 2px solid #e2e8f0; border-radius: 20px; padding: 15px 5px; cursor: pointer; transition: 0.2s; }
         .user-opt.selected { border-color: #2c7da0; background: #eef4ff; }
         .input-group input { width: 100%; padding: 14px; border: 1px solid #e2e8f0; border-radius: 50px; margin-bottom: 15px; text-align: center; font-size: 1rem; }
-        .btn-login { background: #2c7da0; color: white; width: 100%; padding: 14px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; font-size: 1.1rem; }
+        .btn-login { background: #2c7da0; color: white; width: 100%; padding: 14px; border: none; border-radius: 50px; cursor: pointer; font-weight: bold; }
 
         .app-container { max-width: 1400px; margin: 0 auto; padding: 20px; }
         .top-bar { background: white; border-radius: 28px; padding: 16px 28px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .user-badge { display: flex; align-items: center; gap: 10px; }
+        .user-badge { display: flex; align-items: center; gap: 10px; background: #f1f5f9; padding: 8px 20px; border-radius: 60px; }
         .logout-btn { background: #ef4444; color: white; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; }
-        .audit-btn { background: #8b5cf6; color: white; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; margin-right: 5px; }
         .admin-btn { background: #10b981; color: white; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; margin-right: 5px; font-weight: bold; }
 
-        .balance-hero { background: linear-gradient(115deg, #1e4a6e, #0f2f46); border-radius: 30px; padding: 30px; color: white; margin-bottom: 28px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .balance-hero { background: linear-gradient(115deg, #1e4a6e, #0f2f46); border-radius: 30px; padding: 30px; color: white; margin-bottom: 28px; }
         .balance-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 15px; margin: 20px 0; }
         .balance-item { background: rgba(255,255,255,0.12); border-radius: 20px; padding: 18px; text-align: center; border: 1px solid rgba(255,255,255,0.05); }
         .opening-tag { font-size: 0.7rem; opacity: 0.8; display: block; margin-top: 5px; color: #10b981; font-weight: bold; }
-        .total-card { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; text-align: center; }
-        .rate-control { margin-top: 20px; background: rgba(0,0,0,0.2); padding: 12px 25px; border-radius: 50px; display: flex; justify-content: space-between; align-items: center; }
-
+        .total-card { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; text-align: center; flex: 1; }
+        
         .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-bottom: 30px; }
         .menu-card { background: white; border-radius: 28px; padding: 30px 20px; text-align: center; cursor: pointer; transition: 0.3s; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
         .menu-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
         .menu-card i { font-size: 3rem; margin-bottom: 15px; color: #2c7da0; }
 
-        .form-panel { background: white; border-radius: 28px; padding: 30px; margin-bottom: 24px; }
+        .form-panel { background: white; border-radius: 28px; padding: 30px; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .flex-row { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 20px; }
         .field { flex: 1; min-width: 180px; }
         .field label { display: block; font-weight: 600; margin-bottom: 8px; color: #1e3a5f; }
         input, select, textarea { width: 100%; padding: 14px; border: 1.5px solid #e2e8f0; border-radius: 20px; font-size: 0.95rem; }
 
         .btn-primary { background: #2c7da0; color: white; border: none; padding: 14px 30px; border-radius: 50px; cursor: pointer; font-weight: 600; font-size: 1rem; }
+        .btn-purple { background: #8b5cf6; color: white; border: none; padding: 14px 30px; border-radius: 50px; cursor: pointer; }
         .data-table { width: 100%; border-collapse: collapse; background: white; border-radius: 20px; overflow: hidden; }
-        .data-table th, .data-table td { padding: 15px; text-align: left; border-bottom: 1px solid #f1f5f9; }
-        .delete-btn { background: #ef4444; border: none; padding: 6px 15px; border-radius: 20px; color: white; cursor: pointer; }
+        .data-table th, .data-table td { padding: 15px; text-align: left; border-bottom: 1px solid #f1f5f9; font-size: 0.9rem; }
+        .delete-btn { background: #ef4444; border: none; padding: 6px 12px; border-radius: 20px; color: white; cursor: pointer; }
         
         .hidden { display: none; }
-        .back-link { display: inline-block; background: #e2e8f0; padding: 10px 25px; border-radius: 40px; margin-bottom: 20px; cursor: pointer; font-weight: 600; }
         .notification { position: fixed; top: 20px; right: 20px; background: #1e3a5f; color: white; padding: 18px 30px; border-radius: 50px; z-index: 9999; opacity: 0; transition: 0.3s; pointer-events: none; }
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 5000; justify-content: center; align-items: center; padding: 20px; }
         .modal.active { display: flex; }
         .modal-content { background: white; border-radius: 32px; padding: 40px; width: 100%; max-width: 650px; max-height: 90vh; overflow-y: auto; }
         .summary-box { background: #f8fafc; border-radius: 25px; padding: 25px; border-left: 6px solid #2c7da0; margin-top: 20px; }
         .disabled-btn { opacity: 0.4; pointer-events: none; }
-        .report-stat { font-size: 1.2rem; font-weight: bold; margin-bottom: 5px; }
     </style>
 </head>
 <body>
 
-<!-- Login Screen -->
 <div id="loginScreen" class="login-wrapper">
     <div class="login-card">
         <div style="font-size: 60px; color: #2c7da0; margin-bottom: 10px;"><i class="fas fa-stethoscope"></i></div>
         <h2>Beergeel OBGY</h2>
-        <p style="color:#64748b;">Cloud Financial Management</p>
         <div class="user-selector">
             <div class="user-opt" data-user="khalid" onclick="selectUser('khalid')"><strong>Khalid</strong><br><small>Admin</small></div>
             <div class="user-opt" data-user="mabruka" onclick="selectUser('mabruka')"><strong>Mabruka</strong><br><small>Staff</small></div>
@@ -78,60 +73,54 @@
     </div>
 </div>
 
-<!-- Main App Container -->
 <div id="mainApp" class="app-container hidden">
     <div class="top-bar">
-        <h2>Beergeel OBGY System</h2>
+        <h2>Beergeel Cloud Financials</h2>
         <div class="user-badge">
-            <span id="displayUserName" style="font-weight: bold; color: #1e3a5f;"></span>
-            <button class="admin-btn" id="periodBtn" onclick="showModal('periodModal')"><i class="fas fa-calendar-check"></i> Monthly Audit</button>
-            <button class="audit-btn" onclick="showAuditLogModal()"><i class="fas fa-history"></i> Log</button>
+            <span id="displayUserName" style="font-weight:bold;"></span>
+            <button class="admin-btn" id="periodBtn" onclick="showModal('periodModal')">Monthly Audit</button>
             <button class="logout-btn" onclick="location.reload()"><i class="fas fa-sign-out-alt"></i></button>
         </div>
     </div>
 
-    <!-- Dash / Balances -->
+    <!-- Dashboard -->
     <div class="balance-hero">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-            <span><i class="fas fa-wallet"></i> LIVE ACCOUNT BALANCES</span>
-            <span id="periodBadge" style="background:#10b981; padding:5px 15px; border-radius:20px; font-size:0.8rem; font-weight:bold;">Loading Period...</span>
+            <span><i class="fas fa-wallet"></i> ACCOUNT BALANCES</span>
+            <span id="periodBadge" style="background:#10b981; padding:5px 15px; border-radius:20px; font-size:0.8rem; font-weight:bold;">Loading...</span>
         </div>
         <div class="balance-grid">
-            <div class="balance-item">Zaad USD<br><strong id="balZaadUsd" style="font-size:1.4rem;">$0.00</strong><span class="opening-tag" id="opZaadUsd"></span></div>
-            <div class="balance-item">Zaad SH<br><strong id="balZaadSh" style="font-size:1.4rem;">0 SH</strong><span class="opening-tag" id="opZaadSh"></span></div>
-            <div class="balance-item">Edahab USD<br><strong id="balEdahabUsd" style="font-size:1.4rem;">$0.00</strong><span class="opening-tag" id="opEdahabUsd"></span></div>
-            <div class="balance-item">Edahab SH<br><strong id="balEdahabSh" style="font-size:1.4rem;">0 SH</strong><span class="opening-tag" id="opEdahabSh"></span></div>
-            <div class="balance-item">Cash USD<br><strong id="balCashUsd" style="font-size:1.4rem;">$0.00</strong><span class="opening-tag" id="opCashUsd"></span></div>
-            <div class="balance-item">Cash SH<br><strong id="balCashSh" style="font-size:1.4rem;">0 SH</strong><span class="opening-tag" id="opCashSh"></span></div>
+            <div class="balance-item">Zaad USD<br><strong id="balZaadUsd">$0.00</strong><span class="opening-tag" id="opZaadUsd"></span></div>
+            <div class="balance-item">Zaad SH<br><strong id="balZaadSh">0 SH</strong><span class="opening-tag" id="opZaadSh"></span></div>
+            <div class="balance-item">Edahab USD<br><strong id="balEdahabUsd">$0.00</strong><span class="opening-tag" id="opEdahabUsd"></span></div>
+            <div class="balance-item">Edahab SH<br><strong id="balEdahabSh">0 SH</strong><span class="opening-tag" id="opEdahabSh"></span></div>
+            <div class="balance-item">Cash USD<br><strong id="balCashUsd">$0.00</strong><span class="opening-tag" id="opCashUsd"></span></div>
+            <div class="balance-item">Cash SH<br><strong id="balCashSh">0 SH</strong><span class="opening-tag" id="opCashSh"></span></div>
         </div>
         <div class="flex-row">
-            <div class="total-card" style="flex:1">TOTAL USD: <strong id="totalUsdOnly" style="font-size:1.6rem;">$0.00</strong></div>
-            <div class="total-card" style="flex:1">GRAND TOTAL WEALTH: <strong id="totalWealthUsd" style="font-size:1.6rem;">$0.00</strong></div>
+            <div class="total-card">TOTAL USD: <strong id="totalUsdOnly">$0.00</strong></div>
+            <div class="total-card">GRAND TOTAL WEALTH: <strong id="totalWealthUsd">$0.00</strong></div>
         </div>
-        <div class="rate-control">
-            <span>Market Rate: 1 USD = <span id="rateDisplay" style="font-weight:bold;">1000</span> SH</span>
-            <button id="rateUpdateBtn" onclick="changeExchangeRate()">Update Rate</button>
-        </div>
+        <div style="margin-top:15px; font-size:0.8rem;">1 USD = <span id="rateDisplay">1000</span> SH <button id="rateBtn" onclick="changeExchangeRate()" style="background:none; border:1px solid white; color:white; padding:2px 8px; border-radius:10px; cursor:pointer; margin-left:10px;">Update Rate</button></div>
     </div>
 
-    <!-- Main Navigation Menu -->
+    <!-- Main Menu -->
     <div id="mainMenuSection">
         <div class="menu-grid">
             <div class="menu-card" onclick="showModule('incomeModule')"><i class="fas fa-hand-holding-usd"></i><h3>Record Income</h3><p>Patient payments</p></div>
-            <div class="menu-card" onclick="showModule('expenseModule')"><i class="fas fa-receipt"></i><h3>Record Expense</h3><p>Clinic costs</p></div>
-            <div class="menu-card" onclick="showModule('recurrentModule')"><i class="fas fa-calendar-alt"></i><h3>Recurrent</h3><p>Salaries & Rent</p></div>
-            <div class="menu-card" onclick="showModule('reportsModule')"><i class="fas fa-chart-pie"></i><h3>Full Report</h3><p>Analytics & Profit</p></div>
+            <div class="menu-card" onclick="showModule('expenseModule')"><i class="fas fa-receipt"></i><h3>Record Expense</h3><p>Costs & Bills</p></div>
+            <div class="menu-card" onclick="showModule('reportsModule')"><i class="fas fa-chart-pie"></i><h3>Full Report</h3><p>Analytics & Profits</p></div>
         </div>
     </div>
 
-    <!-- 1. Income Module (With Preserved Lab Calculation) -->
+    <!-- Income Module -->
     <div id="incomeModule" class="hidden">
-        <div class="back-link" onclick="hideModules()">← Back to Dashboard</div>
+        <div class="back-link" onclick="hideModules()">← Dashboard</div>
         <div class="form-panel">
-            <h2>➕ Record Patient Entry</h2>
+            <h2>➕ New Income Record</h2>
             <div class="flex-row">
                 <div class="field"><label>Date</label><input type="date" id="incDate"></div>
-                <div class="field"><label>Patient Name</label><input type="text" id="clientName"></div>
+                <div class="field"><label>Client Name</label><input type="text" id="clientName"></div>
                 <div class="field"><label>MRN</label><input type="text" id="mrn"></div>
             </div>
             <div class="flex-row">
@@ -143,26 +132,26 @@
                 <div class="field"><label>💊 Pharmacy</label><input type="number" id="pharmAmt" step="0.01"><select id="pharmCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
                 <div class="field"><label>📌 Others</label><input type="number" id="otherAmt" step="0.01"><select id="otherCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
             </div>
-            <button class="btn-primary" onclick="addIncome()">💾 Save Record</button>
+            <button class="btn-primary" onclick="addIncome()">Save Record</button>
         </div>
         <div class="form-panel">
             <h3>Payments Today</h3>
-            <div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Client</th><th>US</th><th>Investig.</th><th>Total USD</th><th>Action</th></tr></thead><tbody id="dailyIncomeTbody"></tbody></table></div>
+            <div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Client</th><th>US</th><th>Investig.</th><th>Pharm</th><th>Total USD</th><th>Action</th></tr></thead><tbody id="dailyIncomeTbody"></tbody></table></div>
         </div>
     </div>
 
-    <!-- 2. Expense Module -->
+    <!-- Expense Module -->
     <div id="expenseModule" class="hidden">
-        <div class="back-link" onclick="hideModules()">← Back</div>
+        <div class="back-link" onclick="hideModules()">← Dashboard</div>
         <div class="form-panel">
-            <h2>💸 Clinic Expenses</h2>
+            <h2>💸 Record Expense</h2>
             <div class="flex-row">
                 <div class="field"><label>Date</label><input type="date" id="expDate"></div>
-                <div class="field"><label>Category</label><select id="expType"><option>Salary</option><option>Rent</option><option>Supplies</option><option>Electricity/Water</option><option>Internet</option><option>Given to Khalid</option><option>Other</option></select></div>
+                <div class="field"><label>Category</label><select id="expType"><option>Salary</option><option>Rent</option><option>Supplies</option><option>Electricity/Water</option><option>Other</option></select></div>
             </div>
             <div class="flex-row">
                 <div class="field"><label>Amount</label><input type="number" id="expAmount" step="0.01"></div>
-                <div class="field"><label>Wallet</label><select id="expCurrency"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+                <div class="field"><label>Wallet</label><select id="expCurrency"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-cash">Cash USD</option></select></div>
             </div>
             <button class="btn-primary" onclick="addExpense()">Record Expense</button>
         </div>
@@ -172,68 +161,41 @@
         </div>
     </div>
 
-    <!-- 3. Reports Module (FULL ANALYSIS AS REQUESTED) -->
+    <!-- Reports Module -->
     <div id="reportsModule" class="hidden">
-        <div class="back-link" onclick="hideModules()">← Back</div>
+        <div class="back-link" onclick="hideModules()">← Dashboard</div>
         <div class="form-panel">
-            <h2>📊 DETAILED FINANCIAL ANALYSIS</h2>
+            <h2>📊 DETAILED FINANCIAL REPORT</h2>
             <div class="flex-row">
-                <div class="field"><label>Start Date</label><input type="date" id="reportStart"></div>
-                <div class="field"><label>End Date</label><input type="date" id="reportEnd"></div>
+                <div class="field"><label>From</label><input type="date" id="reportStart"></div>
+                <div class="field"><label>To</label><input type="date" id="reportEnd"></div>
             </div>
-            <div style="display:flex; gap:10px;">
-                <button class="btn-primary" style="background:#8b5cf6" onclick="generateDetailedReport()">Generate Detailed Analytics</button>
-                <button class="btn-primary" style="background:#10b981" onclick="exportToExcel()">Export All to Excel</button>
-            </div>
-            <div id="reportResult" style="margin-top:20px;"></div>
-        </div>
-    </div>
-
-    <!-- 4. Recurrent Module -->
-    <div id="recurrentModule" class="hidden">
-        <div class="back-link" onclick="hideModules()">← Back</div>
-        <div class="form-panel">
-            <h2>Recurring Item Templates</h2>
-            <div id="recurrentList"></div>
-            <hr style="margin:20px 0;">
-            <div class="flex-row">
-                <input type="text" id="recName" placeholder="Name (e.g. Rent)">
-                <input type="number" id="recAmt" placeholder="Amount">
-                <select id="recCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option></select>
-            </div>
-            <button class="btn-primary" onclick="addRecTemplate()">Add Template</button>
-            <button class="btn-primary" style="background:#10b981; margin-left:10px;" onclick="applyRecurrent()">Apply All Today</button>
+            <button class="btn-purple" onclick="generateDetailedReport()">Analyze Data</button>
+            <button class="btn-primary" style="background:#10b981; margin-left:10px;" onclick="exportToExcel()">Excel Export</button>
+            <div id="reportResult"></div>
         </div>
     </div>
 
     <!-- Modals -->
-    <div id="periodModal" class="modal"><div class="modal-content"><h3>Monthly Audit: Set Period & Opening</h3><div class="flex-row"><div class="field"><label>Start Date</label><input type="date" id="pStart"></div><div class="field"><label>End Date</label><input type="date" id="pEnd"></div></div><p><strong>Opening Balances (Day 1):</strong></p><div class="flex-row"><div class="field"><label>Zaad USD</label><input type="number" id="pZu"></div><div class="field"><label>Zaad SH</label><input type="number" id="pZs"></div></div><div class="flex-row"><div class="field"><label>Edahab USD</label><input type="number" id="pEu"></div><div class="field"><label>Edahab SH</label><input type="number" id="pEs"></div></div><div class="flex-row"><div class="field"><label>Cash USD</label><input type="number" id="pCu"></div><div class="field"><label>Cash SH</label><input type="number" id="pCs"></div></div><button class="btn-primary" onclick="savePeriodSettings()">Apply Period Settings</button><button class="btn-primary" style="background:#64748b; margin-left:10px;" onclick="closeModal('periodModal')">Cancel</button></div></div>
+    <div id="periodModal" class="modal"><div class="modal-content"><h3>Audit & Opening Balances</h3><div class="flex-row"><div class="field"><label>Period Start</label><input type="date" id="pStart"></div><div class="field"><label>Period End</label><input type="date" id="pEnd"></div></div><div class="flex-row"><div class="field"><label>Zaad USD</label><input type="number" id="pZu"></div><div class="field"><label>Zaad SH</label><input type="number" id="pZs"></div></div><div class="flex-row"><div class="field"><label>Edahab USD</label><input type="number" id="pEu"></div><div class="field"><label>Edahab SH</label><input type="number" id="pEs"></div></div><div class="flex-row"><div class="field"><label>Cash USD</label><input type="number" id="pCu"></div><div class="field"><label>Cash SH</label><input type="number" id="pCs"></div></div><button class="btn-primary" onclick="savePeriodSettings()">Apply Settings</button><button class="btn-primary" style="background:#64748b; margin-left:10px;" onclick="closeModal('periodModal')">Cancel</button></div></div>
 
-    <div id="auditLogModal" class="modal"><div class="modal-content"><h3>History Logs</h3><div id="auditLogList" style="max-height: 50vh; overflow-y:auto;"></div><button class="btn-primary" style="background:#64748b; margin-top:15px;" onclick="closeModal('auditLogModal')">Close</button></div></div>
-
-    <div id="deleteRemarkModal" class="modal"><div class="modal-content"><h3>Reason for Deletion</h3><textarea id="deleteRemark" style="width:100%; height:80px; margin-top:10px; padding:10px;"></textarea><button class="btn-primary" style="background:#ef4444; margin-top:15px;" onclick="executePendingDeletion()">Confirm Delete</button><button class="btn-primary" style="background:#64748b; margin-top:15px; margin-left:10px;" onclick="closeModal('deleteRemarkModal')">Cancel</button></div></div>
+    <div id="deleteRemarkModal" class="modal"><div class="modal-content"><h3>Reason for Deletion</h3><textarea id="deleteRemark" style="width:100%; height:80px; margin-top:10px;"></textarea><button class="btn-primary" style="background:#ef4444; margin-top:15px;" onclick="executePendingDeletion()">Confirm Delete</button><button class="btn-primary" style="background:#64748b; margin-left:10px;" onclick="closeModal('deleteRemarkModal')">Cancel</button></div></div>
 
 </div>
 
 <div id="toastNotification" class="notification"></div>
 
 <script>
-    // --- DATABASE CONNECTION (VERIFIED) ---
+    // --- SUPABASE VERIFIED ---
     const SUPABASE_URL = 'https://xwuirwgldlzrimebrgxv.supabase.co';
     const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh3dWlyd2dsZGx6cmltZWJyZ3h2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU2NzcxNDksImV4cCI6MjA5MTI1MzE0OX0.x3xIl0uxXegawVm3NQ_2-GBEXLY2Ye_bZyVHYrhXf6Q';
     const _client = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
     let EXCHANGE_RATE = 1000;
     let currentUser = null, selectedUser = null;
-    const users = { 
-        khalid: {password:'4141', name:'Khalid', role:'admin'}, 
-        mabruka: {password:'4242', name:'Mabruka', role:'staff'}, 
-        monitor: {password:'4343', name:'Monitor', role:'viewer'} 
-    };
-    
-    let incomeRecords = [], expenseRecords = [], recurrentTemplates = [], auditLog = [], currentPeriod = null;
+    const users = { khalid: {password:'4141', name:'Khalid', role:'admin'}, mabruka: {password:'4242', name:'Mabruka', role:'staff'}, monitor: {password:'4343', name:'Monitor', role:'viewer'} };
+    let incomeRecords = [], expenseRecords = [], currentPeriod = null;
 
-    // --- CORE DATA LOADING ---
     async function loadAllData() {
         try {
             const { data: set } = await _client.from('settings').select('*').eq('key', 'exchange_rate').single();
@@ -247,30 +209,14 @@
             const { data: exp } = await _client.from('expense_records').select('*').gte('date', currentPeriod.start_date).lte('date', currentPeriod.end_date).order('date', {ascending: false});
             expenseRecords = exp || [];
             
-            const { data: rec } = await _client.from('recurrent_templates').select('*'); recurrentTemplates = rec || [];
-            const { data: aud } = await _client.from('audit_log').select('*').order('timestamp', {ascending: false}); auditLog = aud || [];
-
             calculateDashboard(); refreshUI();
-        } catch(e) { console.error(e); }
+        } catch(e) { showNotification("Cloud Error: Check API/Schema", "error"); }
     }
 
     function calculateDashboard() {
-        let b = { 
-            zu: currentPeriod.zaad_usd_open, zs: currentPeriod.zaad_sh_open, 
-            eu: currentPeriod.edahab_usd_open, es: currentPeriod.edahab_sh_open, 
-            cu: currentPeriod.cash_usd_open, cs: currentPeriod.cash_sh_open 
-        };
-
-        incomeRecords.forEach(r => { 
-            b.zu+=(r.zaad_usd||0); b.zs+=(r.zaad_sh||0); 
-            b.eu+=(r.edahab_usd||0); b.es+=(r.edahab_sh||0); 
-            b.cu+=(r.cash_usd||0); b.cs+=(r.cash_sh||0); 
-        });
-        expenseRecords.forEach(r => { 
-            b.zu-=(r.zaad_usd||0); b.zs-=(r.zaad_sh||0); 
-            b.eu-=(r.edahab_usd||0); b.es-=(r.edahab_sh||0); 
-            b.cu-=(r.cash_usd||0); b.cs-=(r.cash_sh||0); 
-        });
+        let b = { zu: currentPeriod.zaad_usd_open, zs: currentPeriod.zaad_sh_open, eu: currentPeriod.edahab_usd_open, es: currentPeriod.edahab_sh_open, cu: currentPeriod.cash_usd_open, cs: currentPeriod.cash_sh_open };
+        incomeRecords.forEach(r => { b.zu+=(r.zaad_usd||0); b.zs+=(r.zaad_sh||0); b.eu+=(r.edahab_usd||0); b.es+=(r.edahab_sh||0); b.cu+=(r.cash_usd||0); b.cs+=(r.cash_sh||0); });
+        expenseRecords.forEach(r => { b.zu-=(r.zaad_usd||0); b.zs-=(r.zaad_sh||0); b.eu-=(r.edahab_usd||0); b.es-=(r.edahab_sh||0); b.cu-=(r.cash_usd||0); b.cs-=(r.cash_sh||0); });
         
         document.getElementById('balZaadUsd').innerText = `$${b.zu.toFixed(2)}`;
         document.getElementById('balZaadSh').innerText = `${b.zs.toLocaleString()} SH`;
@@ -279,8 +225,8 @@
         document.getElementById('balCashUsd').innerText = `$${b.cu.toFixed(2)}`;
         document.getElementById('balCashSh').innerText = `${b.cs.toLocaleString()} SH`;
         
-        document.getElementById('opZaadUsd').innerText = `Open: $${currentPeriod.zaad_usd_open.toFixed(2)}`;
-        document.getElementById('opZaadSh').innerText = `Open: ${currentPeriod.zaad_sh_open.toLocaleString()} SH`;
+        document.getElementById('opZaadUsd').innerText = `Start: $${currentPeriod.zaad_usd_open.toFixed(2)}`;
+        document.getElementById('opZaadSh').innerText = `Start: ${currentPeriod.zaad_sh_open.toLocaleString()} SH`;
 
         let tu = b.zu + b.eu + b.cu; let ts = b.zs + b.es + b.cs;
         document.getElementById('totalUsdOnly').innerText = `$${tu.toFixed(2)}`;
@@ -288,17 +234,15 @@
         document.getElementById('periodBadge').innerText = `${currentPeriod.start_date} to ${currentPeriod.end_date}`;
     }
 
-    // --- DETAILED REPORT (COMPLETE BREAKDOWN) ---
     async function generateDetailedReport() {
         const start = document.getElementById('reportStart').value;
         const end = document.getElementById('reportEnd').value;
-        if(!start || !end) return showNotification("Please select start/end dates", "error");
+        if(!start || !end) return;
 
         const { data: inc } = await _client.from('income_records').select('*').gte('date', start).lte('date', end);
         const { data: exp } = await _client.from('expense_records').select('*').gte('date', start).lte('date', end);
 
         let srv = { card:0, us:0, lab:0, pharm:0, other:0 };
-        let coll = { usd:0, sh:0 };
         let exCat = {};
 
         (inc||[]).forEach(r => {
@@ -307,11 +251,6 @@
             srv.lab += getUsdValue(r.lab_amt, r.lab_curr);
             srv.pharm += getUsdValue(r.pharm_amt, r.pharm_curr);
             srv.other += getUsdValue(r.other_amt, r.other_curr);
-            
-            ['card','us','lab','pharm','other'].forEach(f => {
-                let a = r[f+'_amt']||0; let c = r[f+'_curr'];
-                if(c?.startsWith('usd')) coll.usd += a; else if(c?.startsWith('sh')) coll.sh += a;
-            });
         });
         (exp||[]).forEach(e => { exCat[e.type] = (exCat[e.type]||0) + (e.usd_value||0); });
 
@@ -320,7 +259,7 @@
 
         document.getElementById('reportResult').innerHTML = `
             <div class="summary-box">
-                <h4>💰 Income Breakdown (USD Value)</h4>
+                <h4>💰 Income Breakdown (USD)</h4>
                 <ul>
                     <li>💳 Consultation (Card): $${srv.card.toFixed(2)}</li>
                     <li>🩺 Ultrasound: $${srv.us.toFixed(2)}</li>
@@ -328,34 +267,24 @@
                     <li>💊 Pharmacy: $${srv.pharm.toFixed(2)}</li>
                     <li>📌 Others: $${srv.other.toFixed(2)}</li>
                 </ul>
-                <h4 style="margin-top:20px;">📉 Expense Categories</h4>
-                <ul>${Object.entries(exCat).map(([k,v])=>`<li>${k}: $${v.toFixed(2)}</li>`).join('') || '<li>No expenses recorded</li>'}</ul>
-                <h4 style="margin-top:20px;">💵 Collected Currency (Cash in Hand)</h4>
-                <p>Pure USD Collected: <strong>$${coll.usd.toFixed(2)}</strong></p>
-                <p>Pure Shillings Collected: <strong>${coll.sh.toLocaleString()} SH</strong></p>
+                <h4 style="margin-top:20px;">📉 Expense Breakdown</h4>
+                <ul>${Object.entries(exCat).map(([k,v])=>`<li>${k}: $${v.toFixed(2)}</li>`).join('') || '<li>No expenses</li>'}</ul>
                 <hr style="margin:15px 0">
-                <div class="report-stat" style="color:#2c7da0">Total Revenue: $${tInc.toFixed(2)}</div>
-                <div class="report-stat" style="color:#ef4444">Total Expense: $${tExp.toFixed(2)}</div>
-                <div class="report-stat" style="color:#10b981; font-size:1.5rem;">NET PROFIT: $${(tInc - tExp).toFixed(2)}</div>
+                <p><strong>Revenue: $${tInc.toFixed(2)}</strong> | <strong>Expense: $${tExp.toFixed(2)}</strong></p>
+                <p style="font-size:1.4rem; color:#10b981;"><strong>NET PROFIT: $${(tInc - tExp).toFixed(2)}</strong></p>
             </div>
         `;
     }
 
-    // --- SAVE FUNCTIONS (FIXED) ---
     async function addIncome() {
         if(currentUser === 'monitor') return;
-        let cName = document.getElementById('clientName').value;
-        if(!cName) return showNotification("Missing Client Name", "error");
-        
         let b = { zaad_usd:0, zaad_sh:0, edahab_usd:0, edahab_sh:0, cash_usd:0, cash_sh:0 }, totalUsd = 0;
         ['card','us','lab','pharm','other'].forEach(s => {
-            let val = parseFloat(document.getElementById(s+'Amt').value)||0;
-            let code = document.getElementById(s+'Curr').value;
+            let val = parseFloat(document.getElementById(s+'Amt').value)||0; let code = document.getElementById(s+'Curr').value;
             if(val > 0) { totalUsd += getUsdValue(val, code); addToBreakdown(b, val, code); }
         });
-
         const { data, error } = await _client.from('income_records').insert([{ 
-            date: document.getElementById('incDate').value, client: cName, mrn: document.getElementById('mrn').value, 
+            date: document.getElementById('incDate').value, client: document.getElementById('clientName').value, mrn: document.getElementById('mrn').value, 
             card_amt: parseFloat(document.getElementById('cardAmt').value)||0, card_curr: document.getElementById('cardCurr').value,
             us_amt: parseFloat(document.getElementById('usAmt').value)||0, us_curr: document.getElementById('usCurr').value,
             lab_amt: parseFloat(document.getElementById('labAmt').value)||0, lab_curr: document.getElementById('labCurr').value,
@@ -365,52 +294,40 @@
         }]).select();
 
         if(!error && data) {
-            // ORIGINAL LAB CALCULATION (50% Cost)
-            let labVal = parseFloat(document.getElementById('labAmt').value)||0;
-            let labCurr = document.getElementById('labCurr').value;
+            // Laboratory 50% Auto Expense Calculation
+            let labVal = parseFloat(document.getElementById('labAmt').value)||0; let labCurr = document.getElementById('labCurr').value;
             if(labVal > 0) {
                 let share = labVal / 2; let lb = { zaad_usd:0, zaad_sh:0, edahab_usd:0, edahab_sh:0, cash_usd:0, cash_sh:0 };
                 addToBreakdown(lb, share, labCurr);
-                await _client.from('expense_records').insert([{ date: document.getElementById('incDate').value, type:'🧪 Investigation Auto-Cost', amount:share, currency:labCurr, ...lb, usd_value: getUsdValue(share, labCurr), income_id: data[0].id, auto_generated: true }]);
+                await _client.from('expense_records').insert([{ date: document.getElementById('incDate').value, type:'🧪 Investig. Auto-Cost', amount:share, currency:labCurr, ...lb, usd_value: getUsdValue(share, labCurr), income_id: data[0].id }]);
             }
-            showNotification("Income Record Saved"); loadAllData();
-            document.getElementById('clientName').value = '';
-            ['card','us','lab','pharm','other'].forEach(s => document.getElementById(s+'Amt').value = '');
-        } else { alert("Save Failed: " + error.message); }
+            showNotification("Saved!"); loadAllData();
+        }
     }
 
     async function addExpense() {
         if(currentUser === 'monitor') return;
-        let amt = parseFloat(document.getElementById('expAmount').value);
-        let curr = document.getElementById('expCurrency').value;
-        if(!amt) return showNotification("Missing Amount", "error");
-        
-        let b = { zaad_usd:0, zaad_sh:0, edahab_usd:0, edahab_sh:0, cash_usd:0, cash_sh:0 };
-        addToBreakdown(b, amt, curr);
-        const { error } = await _client.from('expense_records').insert([{ date: document.getElementById('expDate').value, type: document.getElementById('expType').value, amount:amt, currency:curr, ...b, usd_value: getUsdValue(amt, curr) }]);
-        if(!error) { loadAllData(); showNotification("Expense Saved"); } else { alert(error.message); }
+        let amt = parseFloat(document.getElementById('expAmount').value); let curr = document.getElementById('expCurrency').value;
+        if(!amt) return;
+        let b = { zaad_usd:0, zaad_sh:0, edahab_usd:0, edahab_sh:0, cash_usd:0, cash_sh:0 }; addToBreakdown(b, amt, curr);
+        await _client.from('expense_records').insert([{ date: document.getElementById('expDate').value, type: document.getElementById('expType').value, amount:amt, currency:curr, ...b, usd_value: getUsdValue(amt, curr) }]);
+        loadAllData(); showNotification("Expense Saved");
     }
 
     async function savePeriodSettings() {
         if(currentUser !== 'khalid') return;
-        const pData = { 
-            start_date: document.getElementById('pStart').value, 
-            end_date: document.getElementById('pEnd').value, 
-            zaad_usd_open: parseFloat(document.getElementById('pZu').value)||0, 
-            zaad_sh_open: parseFloat(document.getElementById('pZs').value)||0, 
-            edahab_usd_open: parseFloat(document.getElementById('pEu').value)||0, 
-            edahab_sh_open: parseFloat(document.getElementById('pEs').value)||0, 
-            cash_usd_open: parseFloat(document.getElementById('pCu').value)||0, 
-            cash_sh_open: parseFloat(document.getElementById('pCs').value)||0 
-        };
+        const pData = { start_date: document.getElementById('pStart').value, end_date: document.getElementById('pEnd').value, zaad_usd_open: parseFloat(document.getElementById('pZu').value)||0, zaad_sh_open: parseFloat(document.getElementById('pZs').value)||0, edahab_usd_open: parseFloat(document.getElementById('pEu').value)||0, edahab_sh_open: parseFloat(document.getElementById('pEs').value)||0, cash_usd_open: parseFloat(document.getElementById('pCu').value)||0, cash_sh_open: parseFloat(document.getElementById('pCs').value)||0 };
         const { error } = await _client.from('clinic_periods').insert([pData]);
-        if(!error) { closeModal('periodModal'); loadAllData(); showNotification("Monthly Audit Updated!"); }
-        else { alert("Error saving audit: " + error.message); }
+        if(!error) { closeModal('periodModal'); loadAllData(); showNotification("Audit Applied"); } else { alert(error.message); }
     }
 
-    // --- UI & TOOLS ---
+    async function changeExchangeRate() {
+        if(currentUser !== 'khalid') return;
+        let r = prompt("New Rate:", EXCHANGE_RATE);
+        if(r) { await _client.from('settings').upsert({key:'exchange_rate', value:r}); loadAllData(); }
+    }
+
     function selectUser(u) { selectedUser = u; document.querySelectorAll('.user-opt').forEach(o=>o.classList.toggle('selected', o.dataset.user===u)); }
-    
     function handleLogin() { 
         if(users[selectedUser]?.password === document.getElementById('loginPassword').value) { 
             currentUser = selectedUser; 
@@ -419,32 +336,14 @@
             document.getElementById('displayUserName').innerText = users[currentUser].name; 
             document.getElementById('periodBtn').style.display = (currentUser==='khalid'?'inline-block':'none');
             document.getElementById('rateUpdateBtn').style.display = (currentUser==='khalid'?'inline-block':'none');
-            if(currentUser === 'monitor') document.querySelectorAll('.btn-primary').forEach(b=>b.classList.add('disabled-btn'));
+            if(currentUser === 'monitor') document.querySelectorAll('.btn-primary, .delete-btn').forEach(b=>b.classList.add('disabled-btn'));
             let d = new Date().toISOString().split('T')[0]; document.querySelectorAll('input[type="date"]').forEach(i=>i.value=d);
             loadAllData();
-        } else { showNotification("Incorrect Password", "error"); }
-    }
-    
-    async function changeExchangeRate() {
-        if(currentUser !== 'khalid') return;
-        let r = prompt("Set New Exchange Rate (1 USD = ? SH):", EXCHANGE_RATE);
-        if(r && !isNaN(r)) { await _client.from('settings').upsert({key:'exchange_rate', value:r}); loadAllData(); }
-    }
-
-    let pendingT = null, pendingId = null;
-    function requestDelete(type, id) { if(currentUser === 'monitor') return; pendingT = type; pendingId = id; showModal('deleteRemarkModal'); }
-    async function executePendingDeletion() {
-        let remark = document.getElementById('deleteRemark').value; if(!remark) return showNotification("Reason required","error");
-        let table = pendingT === 'inc' ? 'income_records' : 'expense_records';
-        let { data: record } = await _client.from(table).select('*').eq('id', pendingId).single();
-        await _client.from('audit_log').insert([{ user_name: users[currentUser].name, type: 'DELETE '+pendingT.toUpperCase(), remark: remark, deleted_record: record }]);
-        if(pendingT === 'inc') { await _client.from('income_records').delete().eq('id', pendingId); await _client.from('expense_records').delete().eq('income_id', pendingId); }
-        else { await _client.from('expense_records').delete().eq('id', pendingId); }
-        closeModal('deleteRemarkModal'); loadAllData(); showNotification("Deleted & Logged");
+        } 
     }
 
     function showModule(id) { document.getElementById('mainMenuSection').classList.add('hidden'); document.getElementById(id).classList.remove('hidden'); }
-    function hideModules() { ['incomeModule','expenseModule','recurrentModule','reportsModule'].forEach(id=>document.getElementById(id).classList.add('hidden')); document.getElementById('mainMenuSection').classList.remove('hidden'); }
+    function hideModules() { ['incomeModule','expenseModule','reportsModule'].forEach(id=>document.getElementById(id).classList.add('hidden')); document.getElementById('mainMenuSection').classList.remove('hidden'); }
     function showModal(id) { document.getElementById(id).classList.add('active'); }
     function closeModal(id) { document.getElementById(id).classList.remove('active'); }
     function getUsdValue(a, c) { if(!a || !c) return 0; return c.startsWith('usd') ? a : a / EXCHANGE_RATE; }
@@ -452,14 +351,19 @@
     function showNotification(m, t='success') { let n = document.getElementById('toastNotification'); n.innerText = m; n.style.background = t==='error'?'#ef4444':'#1e3a5f'; n.style.opacity=1; setTimeout(()=>n.style.opacity=0, 2500); }
     function refreshUI() {
         let today = new Date().toISOString().split('T')[0]; let daily = incomeRecords.filter(r => r.date === today);
-        document.getElementById('dailyIncomeTbody').innerHTML = daily.map(r => `<tr><td>${r.client}</td><td>$${getUsdValue(r.us_amt,r.us_curr).toFixed(2)}</td><td>$${getUsdValue(r.lab_amt,r.lab_curr).toFixed(2)}</td><td>$${r.total_usd_value.toFixed(2)}</td><td><button class="delete-btn" onclick="requestDelete('inc',${r.id})">Del</button></td></tr>`).join('');
+        document.getElementById('dailyIncomeTbody').innerHTML = daily.map(r => `<tr><td>${r.client}</td><td>$${getUsdValue(r.us_amt,r.us_curr).toFixed(2)}</td><td>$${getUsdValue(r.lab_amt,r.lab_curr).toFixed(2)}</td><td>$${getUsdValue(r.pharm_amt,r.pharm_curr).toFixed(2)}</td><td>$${r.total_usd_value.toFixed(2)}</td><td><button class="delete-btn" onclick="requestDelete('inc',${r.id})">Del</button></td></tr>`).join('');
         document.getElementById('expenseListTbody').innerHTML = expenseRecords.slice(0, 10).map(r => `<tr><td>${r.date}</td><td>${r.type}</td><td>${r.amount}</td><td>$${(r.usd_value||0).toFixed(2)}</td><td><button class="delete-btn" onclick="requestDelete('exp',${r.id})">Del</button></td></tr>`).join('');
-        document.getElementById('recurrentList').innerHTML = recurrentTemplates.map(t => `<div style="padding:10px; border-bottom:1px solid #eee;">${t.name}: ${t.amount} ${t.currency}</div>`).join('');
     }
-    function showAuditLogModal() { document.getElementById('auditLogList').innerHTML = auditLog.map(a => `<div style="padding:10px; border-bottom:1px solid #eee;"><strong>${new Date(a.timestamp).toLocaleString()}</strong><br>${a.user_name}: ${a.remark}</div>`).join('') || "No logs found"; showModal('auditLogModal'); }
-    async function addRecTemplate() { await _client.from('recurrent_templates').insert([{name:document.getElementById('recName').value, amount:document.getElementById('recAmt').value, currency:document.getElementById('recCurr').value}]); loadAllData(); }
-    async function applyRecurrent() { for(let t of recurrentTemplates) { let b={zaad_usd:0,zaad_sh:0,edahab_usd:0,edahab_sh:0,cash_usd:0,cash_sh:0}; addToBreakdown(b, t.amount, t.currency); await _client.from('expense_records').insert([{ date: new Date().toISOString().split('T')[0], type: t.name, amount:t.amount, currency:t.currency, ...b, usd_value: getUsdValue(t.amount, t.currency) }]); } loadAllData(); showNotification("Templates Applied"); }
-    function exportToExcel() { const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(incomeRecords), "Income"); XLSX.writeFile(wb, "Clinic_Finance_Report.xlsx"); }
+    let pendingT = null, pendingId = null;
+    function requestDelete(type, id) { if(currentUser === 'monitor') return; pendingT = type; pendingId = id; showModal('deleteRemarkModal'); }
+    async function executePendingDeletion() {
+        let remark = document.getElementById('deleteRemark').value; if(!remark) return;
+        await _client.from('audit_log').insert([{ user_name: users[currentUser].name, type: 'DELETE '+pendingT.toUpperCase(), remark: remark }]);
+        if(pendingT === 'inc') { await _client.from('income_records').delete().eq('id', pendingId); await _client.from('expense_records').delete().eq('income_id', pendingId); }
+        else { await _client.from('expense_records').delete().eq('id', pendingId); }
+        closeModal('deleteRemarkModal'); loadAllData();
+    }
+    function exportToExcel() { const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(incomeRecords), "Income"); XLSX.writeFile(wb, "ClinicAudit.xlsx"); }
 </script>
 </body>
 </html>
