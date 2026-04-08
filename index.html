@@ -227,7 +227,10 @@
         
         document.getElementById('opZaadUsd').innerText = `Start: $${currentPeriod.zaad_usd_open.toFixed(2)}`;
         document.getElementById('opZaadSh').innerText = `Start: ${currentPeriod.zaad_sh_open.toLocaleString()} SH`;
-
+        document.getElementById('opEdahabUsd').innerText = `Start: $${currentPeriod.edahab_usd_open.toFixed(2)}`;
+	document.getElementById('opEdahabSh').innerText = `Start: ${currentPeriod.edahab_sh_open.toLocaleString()} SH`;
+	document.getElementById('opCashUsd').innerText = `Start: $${currentPeriod.cash_usd_open.toFixed(2)}`;
+	document.getElementById('opCashSh').innerText = `Start: ${currentPeriod.cash_sh_open.toLocaleString()} SH`;
         let tu = b.zu + b.eu + b.cu; let ts = b.zs + b.es + b.cs;
         document.getElementById('totalUsdOnly').innerText = `$${tu.toFixed(2)}`;
         document.getElementById('totalWealthUsd').innerText = `$${(tu + ts/EXCHANGE_RATE).toFixed(2)}`;
