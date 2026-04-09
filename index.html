@@ -1,3 +1,4 @@
+--- START OF FILE ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,6 +55,10 @@
         .modal-content { background: white; border-radius: 32px; padding: 40px; width: 100%; max-width: 650px; max-height: 90vh; overflow-y: auto; }
         .summary-box { background: #f8fafc; border-radius: 25px; padding: 25px; border-left: 6px solid #2c7da0; margin-top: 20px; }
         .disabled-btn { opacity: 0.4; pointer-events: none; }
+        .back-link { cursor: pointer; color: #2c7da0; font-weight: bold; margin-bottom: 15px; display: inline-block; }
+        .type-toggle { background: #f1f5f9; padding: 10px; border-radius: 15px; margin-bottom: 20px; display: inline-flex; gap: 10px; }
+        .type-btn { padding: 8px 20px; border-radius: 10px; cursor: pointer; border: none; font-weight: 600; }
+        .type-btn.active { background: #2c7da0; color: white; }
     </style>
 </head>
 <body>
@@ -112,30 +117,62 @@
         </div>
     </div>
 
-    <!-- 1. Income Module (With Lab 50% Auto Calc) -->
+    <!-- 1. Income Module -->
     <div id="incomeModule" class="hidden">
         <div class="back-link" onclick="hideModules()">← Dashboard</div>
         <div class="form-panel">
             <h2>➕ Record Income</h2>
+            
+            <div class="type-toggle">
+                <button id="typePatient" class="type-btn active" onclick="switchIncomeType('patient')">Patient Visit</button>
+                <button id="typeGeneral" class="type-btn" onclick="switchIncomeType('general')">General / Owner Injection</button>
+            </div>
+
             <div class="flex-row">
                 <div class="field"><label>Date</label><input type="date" id="incDate"></div>
-                <div class="field"><label>Patient Name</label><input type="text" id="clientName"></div>
-                <div class="field"><label>MRN</label><input type="text" id="mrn"></div>
+                <div class="field"><label id="sourceLabel">Patient Name</label><input type="text" id="clientName"></div>
+                <div id="mrnField" class="field"><label>MRN</label><input type="text" id="mrn"></div>
             </div>
-            <div class="flex-row">
-                <div class="field"><label>💳 Card</label><input type="number" id="cardAmt" step="0.01"><select id="cardCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
-                <div class="field"><label>🩺 Ultrasound</label><input type="number" id="usAmt" step="0.01"><select id="usCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
-                <div class="field"><label>🧪 Investigation (Lab)</label><input type="number" id="labAmt" step="0.01"><select id="labCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+
+            <!-- Patient Specific Fields -->
+            <div id="medicalFields">
+                <div class="flex-row">
+                    <div class="field"><label>💳 Card</label><input type="number" id="cardAmt" step="0.01"><select id="cardCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+                    <div class="field"><label>🩺 Ultrasound</label><input type="number" id="usAmt" step="0.01"><select id="usCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+                    <div class="field"><label>🧪 Investigation (Lab)</label><input type="number" id="labAmt" step="0.01"><select id="labCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+                </div>
+                <div class="flex-row">
+                    <div class="field"><label>💊 Pharmacy</label><input type="number" id="pharmAmt" step="0.01"><select id="pharmCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+                    <div class="field"><label>📌 Others</label><input type="number" id="otherAmt" step="0.01"><select id="otherCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+                </div>
             </div>
-            <div class="flex-row">
-                <div class="field"><label>💊 Pharmacy</label><input type="number" id="pharmAmt" step="0.01"><select id="pharmCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
-                <div class="field"><label>📌 Others</label><input type="number" id="otherAmt" step="0.01"><select id="otherCurr"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+
+            <!-- General Income Fields (Hidden by default) -->
+            <div id="generalFields" class="hidden">
+                <div class="flex-row">
+                    <div class="field" style="flex: 2;">
+                        <label>Received Amount</label>
+                        <input type="number" id="genAmt" step="0.01" placeholder="0.00">
+                    </div>
+                    <div class="field">
+                        <label>Deposit To</label>
+                        <select id="genCurr">
+                            <option value="usd-zaad">Zaad USD</option>
+                            <option value="sh-zaad">Zaad SH</option>
+                            <option value="usd-edahab">Edahab USD</option>
+                            <option value="sh-edahab">Edahab SH</option>
+                            <option value="usd-cash">Cash USD</option>
+                            <option value="sh-cash">Cash SH</option>
+                        </select>
+                    </div>
+                </div>
             </div>
+
             <button class="btn-primary" onclick="addIncome()">💾 Save Entry</button>
         </div>
         <div class="form-panel">
             <h3>History Today</h3>
-            <div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Client</th><th>US</th><th>Lab</th><th>Total USD</th><th>Action</th></tr></thead><tbody id="dailyIncomeTbody"></tbody></table></div>
+            <div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Source</th><th>US</th><th>Lab</th><th>Total USD</th><th>Action</th></tr></thead><tbody id="dailyIncomeTbody"></tbody></table></div>
         </div>
     </div>
 
@@ -147,20 +184,21 @@
             <div class="flex-row">
                 <div class="field"><label>Date</label><input type="date" id="expDate"></div>
                 <div class="field"><label>Category</label><select id="expType"><option>Salary</option><option>Rent</option><option>Supplies</option><option>Internet</option><option>Electricity/Water</option><option>Given to Khalid</option><option>Other</option></select></div>
+                <div class="field"><label>Amount</label><input type="number" id="expAmount" step="0.01"></div>
             </div>
             <div class="flex-row">
-                <div class="field"><label>Amount</label><input type="number" id="expAmount" step="0.01"></div>
                 <div class="field"><label>Source</label><select id="expCurrency"><option value="usd-zaad">Zaad USD</option><option value="sh-zaad">Zaad SH</option><option value="usd-edahab">Edahab USD</option><option value="sh-edahab">Edahab SH</option><option value="usd-cash">Cash USD</option><option value="sh-cash">Cash SH</option></select></div>
+                <div class="field" style="flex: 2;"><label>Remark / Notes</label><input type="text" id="expRemark" placeholder="Optional details"></div>
             </div>
             <button class="btn-primary" onclick="addExpense()">Record Expense</button>
         </div>
         <div class="form-panel">
             <h3>Recent Expenses</h3>
-            <div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Date</th><th>Type</th><th>Amt</th><th>USD Val</th><th>Action</th></tr></thead><tbody id="expenseListTbody"></tbody></table></div>
+            <div style="overflow-x:auto;"><table class="data-table"><thead><tr><th>Date</th><th>Type</th><th>Remark</th><th>Amt</th><th>USD Val</th><th>Action</th></tr></thead><tbody id="expenseListTbody"></tbody></table></div>
         </div>
     </div>
 
-    <!-- 3. Reports Module (DETAILED BREAKDOWN) -->
+    <!-- 3. Reports Module -->
     <div id="reportsModule" class="hidden">
         <div class="back-link" onclick="hideModules()">← Dashboard</div>
         <div class="form-panel">
@@ -193,6 +231,7 @@
 
     let EXCHANGE_RATE = 1000;
     let currentUser = null, selectedUser = null;
+    let incomeMode = 'patient';
     const users = { khalid: {password:'4141', name:'Khalid', role:'admin'}, mabruka: {password:'4242', name:'Mabruka', role:'staff'}, monitor: {password:'4343', name:'Monitor', role:'viewer'} };
     let incomeRecords = [], expenseRecords = [], currentPeriod = null;
 
@@ -237,7 +276,24 @@
         document.getElementById('periodBadge').innerText = `${currentPeriod.start_date} to ${currentPeriod.end_date}`;
     }
 
-    // --- DETAILED ANALYSIS ---
+    function switchIncomeType(type) {
+        incomeMode = type;
+        document.getElementById('typePatient').classList.toggle('active', type === 'patient');
+        document.getElementById('typeGeneral').classList.toggle('active', type === 'general');
+        
+        if(type === 'patient') {
+            document.getElementById('medicalFields').classList.remove('hidden');
+            document.getElementById('generalFields').classList.add('hidden');
+            document.getElementById('mrnField').classList.remove('hidden');
+            document.getElementById('sourceLabel').innerText = "Patient Name";
+        } else {
+            document.getElementById('medicalFields').classList.add('hidden');
+            document.getElementById('generalFields').classList.remove('hidden');
+            document.getElementById('mrnField').classList.add('hidden');
+            document.getElementById('sourceLabel').innerText = "Income Source / Owner Name";
+        }
+    }
+
     async function generateDetailedReport() {
         const start = document.getElementById('reportStart').value;
         const end = document.getElementById('reportEnd').value;
@@ -279,43 +335,64 @@
         `;
     }
 
-    // --- SAVE ACTIONS ---
     async function addIncome() {
         if(currentUser === 'monitor') return;
         let cName = document.getElementById('clientName').value; if(!cName) return;
         let b = { zaad_usd:0, zaad_sh:0, edahab_usd:0, edahab_sh:0, cash_usd:0, cash_sh:0 }, totalUsd = 0;
-        ['card','us','lab','pharm','other'].forEach(s => {
-            let val = parseFloat(document.getElementById(s+'Amt').value)||0; let code = document.getElementById(s+'Curr').value;
-            if(val > 0) { totalUsd += getUsdValue(val, code); addToBreakdown(b, val, code); }
-        });
-        const { data, error } = await _client.from('income_records').insert([{ 
-            date: document.getElementById('incDate').value, client: cName, mrn: document.getElementById('mrn').value, 
-            card_amt: parseFloat(document.getElementById('cardAmt').value)||0, card_curr: document.getElementById('cardCurr').value, 
-            us_amt: parseFloat(document.getElementById('usAmt').value)||0, us_curr: document.getElementById('usCurr').value, 
-            lab_amt: parseFloat(document.getElementById('labAmt').value)||0, lab_curr: document.getElementById('labCurr').value,
-            pharm_amt: parseFloat(document.getElementById('pharmAmt').value)||0, pharm_curr: document.getElementById('pharmCurr').value,
-            other_amt: parseFloat(document.getElementById('otherAmt').value)||0, other_curr: document.getElementById('otherCurr').value,
-            ...b, total_usd_value: totalUsd, created_by: currentUser 
-        }]).select();
+        
+        let payload = {
+            date: document.getElementById('incDate').value, 
+            client: cName, 
+            mrn: document.getElementById('mrn').value,
+            created_by: currentUser 
+        };
+
+        if(incomeMode === 'patient') {
+            ['card','us','lab','pharm','other'].forEach(s => {
+                let val = parseFloat(document.getElementById(s+'Amt').value)||0; let code = document.getElementById(s+'Curr').value;
+                if(val > 0) { totalUsd += getUsdValue(val, code); addToBreakdown(b, val, code); }
+                payload[s+'_amt'] = val; payload[s+'_curr'] = code;
+            });
+        } else {
+            // General / Owner Injection
+            let val = parseFloat(document.getElementById('genAmt').value)||0;
+            let code = document.getElementById('genCurr').value;
+            if(val <= 0) return alert("Enter valid amount");
+            totalUsd = getUsdValue(val, code);
+            addToBreakdown(b, val, code);
+            payload['other_amt'] = val; payload['other_curr'] = code;
+        }
+
+        const { data, error } = await _client.from('income_records').insert([{ ...payload, ...b, total_usd_value: totalUsd }]).select();
 
         if(!error) {
-            // Laboratory 50% Auto Expense Calculation
-            let labA = parseFloat(document.getElementById('labAmt').value)||0; let labC = document.getElementById('labCurr').value;
-            if(labA > 0) {
-                let share = labA / 2; let lb = {zaad_usd:0, zaad_sh:0, edahab_usd:0, edahab_sh:0, cash_usd:0, cash_sh:0}; addToBreakdown(lb, share, labC);
-                await _client.from('expense_records').insert([{ date: document.getElementById('incDate').value, type:'🧪 Investigation Auto-Cost', amount:share, currency:labC, ...lb, usd_value: getUsdValue(share, labC), income_id: data[0].id }]);
+            // Only split Lab for patients
+            if(incomeMode === 'patient') {
+                let labA = parseFloat(document.getElementById('labAmt').value)||0; let labC = document.getElementById('labCurr').value;
+                if(labA > 0) {
+                    let share = labA / 2; let lb = {zaad_usd:0, zaad_sh:0, edahab_usd:0, edahab_sh:0, cash_usd:0, cash_sh:0}; addToBreakdown(lb, share, labC);
+                    await _client.from('expense_records').insert([{ date: payload.date, type:'🧪 Investigation Auto-Cost', amount:share, currency:labC, remark: 'Auto-split 50%', ...lb, usd_value: getUsdValue(share, labC), income_id: data[0].id }]);
+                }
             }
-            showNotification("Saved Successfully"); loadAllData(); document.getElementById('clientName').value = '';
+            showNotification("Saved Successfully"); 
+            loadAllData(); 
+            // Reset fields
+            document.getElementById('clientName').value = '';
+            document.getElementById('genAmt').value = '';
+            ['card','us','lab','pharm','other'].forEach(s => document.getElementById(s+'Amt').value = '');
         } else { alert("Database Error: " + error.message); }
     }
 
     async function addExpense() {
         if(currentUser === 'monitor') return;
-        let amt = parseFloat(document.getElementById('expAmount').value); let curr = document.getElementById('expCurrency').value;
+        let amt = parseFloat(document.getElementById('expAmount').value); 
+        let curr = document.getElementById('expCurrency').value;
+        let remark = document.getElementById('expRemark').value;
         if(!amt) return;
         let b = { zaad_usd:0, zaad_sh:0, edahab_usd:0, edahab_sh:0, cash_usd:0, cash_sh:0 }; addToBreakdown(b, amt, curr);
-        await _client.from('expense_records').insert([{ date: document.getElementById('expDate').value, type: document.getElementById('expType').value, amount:amt, currency:curr, ...b, usd_value: getUsdValue(amt, curr) }]);
+        await _client.from('expense_records').insert([{ date: document.getElementById('expDate').value, type: document.getElementById('expType').value, amount:amt, currency:curr, remark: remark, ...b, usd_value: getUsdValue(amt, curr) }]);
         loadAllData(); showNotification("Expense Recorded");
+        document.getElementById('expAmount').value = ''; document.getElementById('expRemark').value = '';
     }
 
     async function savePeriodSettings() {
@@ -325,7 +402,6 @@
         if(!error) { closeModal('periodModal'); loadAllData(); showNotification("Audit Applied"); } else { alert(error.message); }
     }
 
-    // --- UI HELPERS ---
     function selectUser(u) { selectedUser = u; document.querySelectorAll('.user-opt').forEach(o=>o.classList.toggle('selected', o.dataset.user===u)); }
     function handleLogin() { if(users[selectedUser]?.password === document.getElementById('loginPassword').value) { currentUser = selectedUser; document.getElementById('loginScreen').classList.add('hidden'); document.getElementById('mainApp').classList.remove('hidden'); document.getElementById('displayUserName').innerText = users[currentUser].name; document.getElementById('periodBtn').style.display = (currentUser==='khalid'?'inline-block':'none'); document.getElementById('rateBtn').style.display = (currentUser==='khalid'?'inline-block':'none'); if(currentUser === 'monitor') document.querySelectorAll('.btn-primary').forEach(b=>b.classList.add('disabled-btn')); let d = new Date().toISOString().split('T')[0]; document.querySelectorAll('input[type="date"]').forEach(i=>i.value=d); loadAllData(); } }
     function showModule(id) { document.getElementById('mainMenuSection').classList.add('hidden'); document.getElementById(id).classList.remove('hidden'); }
@@ -336,11 +412,14 @@
     function addToBreakdown(b, a, c) { if(c==='usd-zaad') b.zaad_usd+=a; else if(c==='sh-zaad') b.zaad_sh+=a; else if(c==='usd-edahab') b.edahab_usd+=a; else if(c==='sh-edahab') b.edahab_sh+=a; else if(c==='usd-cash') b.cash_usd+=a; else if(c==='sh-cash') b.cash_sh+=a; }
     function showNotification(m, t='success') { let n = document.getElementById('toastNotification'); n.innerText = m; n.style.background = t==='error'?'#ef4444':'#1e3a5f'; n.style.opacity=1; setTimeout(()=>n.style.opacity=0, 2500); }
     async function changeExchangeRate() { let r = prompt("New Rate:", EXCHANGE_RATE); if(r) { await _client.from('settings').upsert({key:'exchange_rate', value:r}); loadAllData(); } }
+    
     function refreshUI() {
-        let today = new Date().toISOString().split('T')[0]; let daily = incomeRecords.filter(r => r.date === today);
+        let today = new Date().toISOString().split('T')[0]; 
+        let daily = incomeRecords.filter(r => r.date === today);
         document.getElementById('dailyIncomeTbody').innerHTML = daily.map(r => `<tr><td>${r.client}</td><td>$${getUsdValue(r.us_amt,r.us_curr).toFixed(2)}</td><td>$${getUsdValue(r.lab_amt,r.lab_curr).toFixed(2)}</td><td>$${r.total_usd_value.toFixed(2)}</td><td><button class="delete-btn" onclick="requestDelete('inc',${r.id})">Del</button></td></tr>`).join('');
-        document.getElementById('expenseListTbody').innerHTML = expenseRecords.slice(0, 10).map(r => `<tr><td>${r.date}</td><td>${r.type}</td><td>${r.amount}</td><td>$${(r.usd_value||0).toFixed(2)}</td><td><button class="delete-btn" onclick="requestDelete('exp',${r.id})">Del</button></td></tr>`).join('');
+        document.getElementById('expenseListTbody').innerHTML = expenseRecords.slice(0, 10).map(r => `<tr><td>${r.date}</td><td>${r.type}</td><td style="font-size:0.8rem; color:#64748b;">${r.remark || '-'}</td><td>${r.amount}</td><td>$${(r.usd_value||0).toFixed(2)}</td><td><button class="delete-btn" onclick="requestDelete('exp',${r.id})">Del</button></td></tr>`).join('');
     }
+
     let pendingT = null, pendingId = null;
     function requestDelete(type, id) { if(currentUser === 'monitor') return; pendingT = type; pendingId = id; showModal('deleteRemarkModal'); }
     async function executePendingDeletion() {
@@ -350,7 +429,7 @@
         else { await _client.from('expense_records').delete().eq('id', pendingId); }
         closeModal('deleteRemarkModal'); loadAllData();
     }
-    function exportToExcel() { const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(incomeRecords), "Income"); XLSX.writeFile(wb, "ClinicAudit.xlsx"); }
+    function exportToExcel() { const wb = XLSX.utils.book_new(); XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(incomeRecords), "Income"); XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(expenseRecords), "Expenses"); XLSX.writeFile(wb, "ClinicAudit.xlsx"); }
 </script>
 </body>
 </html>
